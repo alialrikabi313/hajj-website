@@ -1,26 +1,731 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary: #1a1a2e;
+  --color-primary-dark: #0f0f1a;
+  --color-primary-light: #2d2d44;
+  --color-secondary: #16213e;
+  --color-secondary-dark: #0d1425;
+  --color-secondary-light: #1f2d52;
+  --color-gold: #c9a227;
+  --color-gold-light: #e8d48b;
+  --color-gold-dark: #9a7b1e;
+  --color-emerald: #0a8754;
+  --color-emerald-light: #10b76e;
+  --color-emerald-dark: #076340;
+  --color-accent: #e94560;
+  --color-accent-light: #ff6b81;
+  --color-accent-dark: #c13351;
+  --color-cream: #FAF8F2;
+  --color-cream-dark: #F0EBE0;
+  --color-warm-gray: #6B6459;
+  --color-text-dark: #2C2A25;
+  --color-text-muted: #7A7670;
+  --color-islamic-green: #1B5E20;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Cairo', sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
 }
+
+/* ============================================
+   LAYOUT STRUCTURE
+   ============================================ */
+#__next,
+[data-nextjs-scroll-focus-boundary] {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+nav {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+}
+
+footer {
+  position: relative;
+  z-index: 10;
+  margin-top: auto;
+}
+
+/* ============================================
+   ISLAMIC PATTERN BACKGROUND (subtle on light)
+   ============================================ */
+.islamic-pattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='1'%3E%3Cpath d='M40 0L20 10l20 10 20-10L40 0zM0 40l20 10 20-10-20-10L0 40zm40 0l20 10 20-10-20-10-20 10zM20 50l20 10 20-10-20-10-20 10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: white;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================
+   TEXT GRADIENT
+   ============================================ */
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold) 50%, var(--color-gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   GLASS EFFECT (for dark sections)
+   ============================================ */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(201, 162, 39, 0.15);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  background: linear-gradient(135deg, var(--color-gold-dark) 0%, var(--color-gold) 50%, var(--color-gold-dark) 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(201, 162, 39, 0.4);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: var(--color-gold);
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 2px solid var(--color-gold);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+  background: var(--color-gold);
+  color: white;
+}
+
+/* Light variant for dark backgrounds */
+.btn-secondary-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  background: transparent;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  gap: 0.5rem;
+}
+
+.btn-secondary-light:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
+}
+
+/* ============================================
+   SECTION TITLE
+   ============================================ */
+.section-title {
+  position: relative;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  color: var(--color-text-dark);
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  border-radius: 2px;
+}
+
+/* Dark section title variant */
+.section-title-light {
+  position: relative;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  color: white;
+}
+
+.section-title-light::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  border-radius: 2px;
+}
+
+/* ============================================
+   CARD STYLES (Light Theme)
+   ============================================ */
+.card {
+  display: block;
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 16px;
+  background: white;
+  border: 1px solid rgba(201, 162, 39, 0.1);
+  transition: all 0.4s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.card:hover {
+  border-color: rgba(201, 162, 39, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Service card (kept for backward compatibility) */
+.service-card {
+  display: block;
+  position: relative;
+  padding: 2rem;
+  border-radius: 16px;
+  background: white;
+  border: 1px solid rgba(201, 162, 39, 0.1);
+  transition: all 0.4s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.service-card:hover {
+  border-color: rgba(201, 162, 39, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(201, 162, 39, 0.1);
+}
+
+/* ============================================
+   DARK SECTIONS (Hero, Stats, CTA)
+   ============================================ */
+.section-dark {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-secondary) 100%);
+  color: white;
+}
+
+.section-dark .section-title {
+  color: white;
+}
+
+/* ============================================
+   DECORATIVE ELEMENTS
+   ============================================ */
+.ornament-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.ornament-line::before,
+.ornament-line::after {
+  content: '';
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+.ornament-diamond {
+  width: 8px;
+  height: 8px;
+  background: var(--color-gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes ticker {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--color-gold);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--color-gold);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-ticker {
+  animation: ticker 25s linear infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ============================================
+   LINE CLAMP
+   ============================================ */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ============================================
+   COLOR UTILITIES
+   ============================================ */
+.text-gold { color: var(--color-gold); }
+.text-gold-light { color: var(--color-gold-light); }
+.text-gold-dark { color: var(--color-gold-dark); }
+.text-emerald { color: var(--color-emerald); }
+.text-emerald-light { color: var(--color-emerald-light); }
+.text-accent { color: var(--color-accent); }
+.text-cream { color: var(--color-cream); }
+.text-warm-gray { color: var(--color-warm-gray); }
+
+.bg-gold { background-color: var(--color-gold); }
+.bg-gold\/10 { background-color: rgba(201, 162, 39, 0.1); }
+.bg-gold\/20 { background-color: rgba(201, 162, 39, 0.2); }
+.bg-gold\/5 { background-color: rgba(201, 162, 39, 0.05); }
+
+.bg-emerald { background-color: var(--color-emerald); }
+.bg-emerald\/10 { background-color: rgba(10, 135, 84, 0.1); }
+.bg-emerald\/20 { background-color: rgba(10, 135, 84, 0.2); }
+
+.bg-accent\/10 { background-color: rgba(233, 69, 96, 0.1); }
+
+.bg-secondary\/20 { background-color: rgba(22, 33, 62, 0.2); }
+
+.bg-primary-dark { background-color: var(--color-primary-dark); }
+.bg-primary-dark\/50 { background-color: rgba(15, 15, 26, 0.5); }
+.bg-primary-dark\/70 { background-color: rgba(15, 15, 26, 0.7); }
+.bg-primary-dark\/80 { background-color: rgba(15, 15, 26, 0.8); }
+.bg-primary-dark\/95 { background-color: rgba(15, 15, 26, 0.95); }
+
+.bg-cream { background-color: var(--color-cream); }
+.bg-cream-dark { background-color: var(--color-cream-dark); }
+
+/* ============================================
+   GLOBAL RESPONSIVE
+   ============================================ */
+
+/* Section title responsive */
+.section-title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.section-title-light {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+/* Prayer times */
+.prayer-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.prayer-content-card {
+  padding: 32px;
+}
+
+.prayer-table-card {
+  padding: 32px;
+}
+
+.city-btn {
+  padding: 12px 32px;
+  font-size: 16px;
+}
+
+/* Footer responsive grid */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 48px;
+}
+
+.footer-main {
+  padding: 64px 24px 32px;
+}
+
+.footer-bottom {
+  padding: 20px 24px;
+}
+
+/* Cards grid responsive */
+.responsive-grid-280 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.responsive-grid-320 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.responsive-grid-250 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.responsive-grid-300 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 48px;
+  align-items: center;
+}
+
+/* CTA boxes */
+.cta-box {
+  padding: 48px 32px;
+}
+
+/* Video modal close */
+.modal-close-btn {
+  position: absolute;
+  top: -48px;
+  left: 0;
+}
+
+/* ============================================
+   TABLET (max-width: 768px)
+   ============================================ */
+@media (max-width: 768px) {
+  /* Section titles */
+  .section-title,
+  .section-title-light {
+    margin-bottom: 2rem;
+  }
+
+  /* Grids */
+  .responsive-grid-280 {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .responsive-grid-320 {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .responsive-grid-250 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .responsive-grid-300 {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .footer-main {
+    padding: 40px 16px 24px;
+  }
+
+  .footer-bottom {
+    padding: 16px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* CTA */
+  .cta-box {
+    padding: 32px 20px;
+  }
+
+  /* Prayer times */
+  .prayer-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .prayer-content-card {
+    padding: 20px 16px;
+  }
+
+  .prayer-table-card {
+    padding: 16px 8px;
+  }
+
+  .city-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .prayer-table th,
+  .prayer-table td {
+    padding: 8px 4px !important;
+    font-size: 12px !important;
+  }
+
+  /* Video modal */
+  .modal-close-btn {
+    top: -40px;
+  }
+
+  /* Cards padding */
+  .card, .service-card {
+    padding: 1.25rem;
+  }
+
+  /* About circle */
+  .about-circle {
+    width: 160px !important;
+    height: 160px !important;
+  }
+
+  .about-circle-text {
+    font-size: 36px !important;
+  }
+}
+
+/* ============================================
+   MOBILE (max-width: 480px)
+   ============================================ */
+@media (max-width: 480px) {
+  /* Grids */
+  .responsive-grid-280 {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .responsive-grid-250 {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-main {
+    padding: 32px 16px 20px;
+  }
+
+  /* CTA */
+  .cta-box {
+    padding: 24px 16px;
+  }
+
+  /* Prayer times */
+  .prayer-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .prayer-card-item {
+    padding: 14px 8px !important;
+  }
+
+  .prayer-card-time {
+    font-size: 20px !important;
+  }
+
+  .prayer-card-label {
+    font-size: 11px !important;
+  }
+
+  /* About circle */
+  .about-circle {
+    width: 140px !important;
+    height: 140px !important;
+  }
+
+  .about-circle-text {
+    font-size: 32px !important;
+  }
+
+  /* Cards padding */
+  .card, .service-card {
+    padding: 1rem;
+  }
+}
+
+.bg-white\/5 { background-color: rgba(255, 255, 255, 0.05); }
+.bg-white\/10 { background-color: rgba(255, 255, 255, 0.1); }
+
+.border-gold { border-color: var(--color-gold); }
+.border-gold\/20 { border-color: rgba(201, 162, 39, 0.2); }
+.border-gold\/30 { border-color: rgba(201, 162, 39, 0.3); }
+.border-gold\/50 { border-color: rgba(201, 162, 39, 0.5); }
+
+.border-white\/5 { border-color: rgba(255, 255, 255, 0.05); }
+.border-white\/10 { border-color: rgba(255, 255, 255, 0.1); }
+.border-white\/20 { border-color: rgba(255, 255, 255, 0.2); }
+
+/* ============================================
+   SHADOW UTILITIES
+   ============================================ */
+.shadow-gold { box-shadow: 0 4px 20px rgba(201, 162, 39, 0.3); }
+.shadow-gold-lg { box-shadow: 0 10px 40px rgba(201, 162, 39, 0.4); }
+.shadow-card { box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04); }
+.shadow-card-hover { box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08); }
+
+/* ============================================
+   GRADIENT UTILITIES
+   ============================================ */
+.from-gold-dark { --tw-gradient-from: var(--color-gold-dark); }
+.to-gold { --tw-gradient-to: var(--color-gold); }
+.from-emerald-light { --tw-gradient-from: var(--color-emerald-light); }
+.to-emerald { --tw-gradient-to: var(--color-emerald); }
+.from-primary-light { --tw-gradient-from: var(--color-primary-light); }
+.to-secondary { --tw-gradient-to: var(--color-secondary); }
