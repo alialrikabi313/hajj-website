@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "hajj-website",
+    "public": "hajj-website/out",
     "ignore": [
       "firebase.json",
       "**/.*",
