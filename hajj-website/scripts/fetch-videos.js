@@ -11,14 +11,20 @@ async function fetchVideos() {
     });
     const data = await res.json();
 
-    const videos = data.items.map(v => ({
-      guid: v.guid,
-      title: v.title,
+    console.log('API Response keys:', Object.keys(data));
+    console.log('Full response:', JSON.stringify(data).substring(0, 500));
+
+    const videoList = data.items || data.Items || data.videos || data;
+    const items = Array.isArray(videoList) ? videoList : [];
+
+    const videos = items.map(v => ({
+      guid: v.guid || v.Guid,
+      title: v.title || v.Title,
       description: v.metaTags?.find(t => t.property === 'description')?.value || '',
-      length: v.length,
-      views: v.views,
-      dateUploaded: v.dateUploaded,
-      thumbnail: `https://vz-4b21b4c2-cf0.b-cdn.net/${v.guid}/thumbnail.jpg`,
+      length: v.length || v.Length || 0,
+      views: v.views || v.Views || 0,
+      dateUploaded: v.dateUploaded || v.DateUploaded,
+      thumbnail: `https://vz-4b21b4c2-cf0.b-cdn.net/${v.guid || v.Guid}/thumbnail.jpg`,
     }));
 
     const outputDir = path.join(__dirname, '..', 'public', 'data');
