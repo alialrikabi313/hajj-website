@@ -13,6 +13,10 @@ jobs:
           cd hajj-website
           npm ci
           npm run build
+      - name: Check output
+        run: |
+          ls hajj-website/out/data/ || echo "data folder not found"
+          cat hajj-website/out/data/videos.json | head -c 200 || echo "videos.json not found"
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
