@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const API_KEY = '9a9f7cae-5e28-40f3-8cd1-d1b1be578dadea8c3e6b-6a21-4727-98e7-b4f4ea575616';
+const API_KEY = '93a86f5d-24bb-4257-b89818175481-aa18-4db2';
 const LIBRARY_ID = '604413';
 
 async function fetchVideos() {
