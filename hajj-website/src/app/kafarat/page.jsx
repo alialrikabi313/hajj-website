@@ -259,13 +259,13 @@ export default function KafaratPage() {
                 }}>
                   <p style={{ color: '#7A7670', fontSize: '13px', fontWeight: '600', marginBottom: '8px' }}>طريقة التواصل</p>
                   <p style={{ color: '#0a8754', fontSize: '18px', fontWeight: '700' }}>واتساب فقط</p>
-                  <p style={{ color: '#5A5650', fontSize: '15px', fontWeight: '600', marginTop: '4px' }} dir="ltr">07782214488</p>
+                  <p style={{ color: '#5A5650', fontSize: '15px', fontWeight: '600', marginTop: '4px' }} dir="ltr">07882214488</p>
                 </div>
               </div>
 
               {/* WhatsApp Button */}
               <a
-                href="https://wa.me/9647782214488?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%B0%D8%A8%D8%AD%20%D8%A7%D9%84%D9%83%D9%81%D8%A7%D8%B1%D8%A7%D8%AA"
+                href="https://wa.me/9647882214488?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A9%20%D8%B0%D8%A8%D8%AD%20%D8%A7%D9%84%D9%83%D9%81%D8%A7%D8%B1%D8%A7%D8%AA"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -635,7 +635,7 @@ export default function KafaratPage() {
             </p>
 
             <a
-              href="https://wa.me/9647782214488?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D9%83%D9%81%D8%A7%D8%B1%D8%A7%D8%AA..."
+              href="https://wa.me/9647882214488?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%A7%D9%84%D9%83%D9%81%D8%A7%D8%B1%D8%A7%D8%AA..."
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -659,7 +659,7 @@ export default function KafaratPage() {
             </a>
 
             <p style={{ color: '#9ca3af', fontSize: '13px', marginTop: '16px' }} dir="ltr">
-              07782214488
+              07882214488
             </p>
           </div>
         </div>

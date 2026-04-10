@@ -560,7 +560,7 @@ export default function ManasikPage() {
 
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px' }}>
             <a
-              href="https://wa.me/9647782214488"
+              href="https://wa.me/9647882214488"
               target="_blank"
               rel="noopener noreferrer"
               style={{

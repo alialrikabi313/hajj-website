@@ -860,7 +860,7 @@ export default function IstiftaatPage() {
           </p>
 
           <a
-            href="https://wa.me/9647782214488?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%AA%D8%A7%D8%A1%20%D8%B9%D9%86..."
+            href="https://wa.me/9647882214488?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%AA%D8%A7%D8%A1%20%D8%B9%D9%86..."
             target="_blank"
             rel="noopener noreferrer"
             style={{
@@ -884,7 +884,7 @@ export default function IstiftaatPage() {
           </a>
 
           <p style={{ color: '#6b7280', fontSize: '13px', marginTop: '12px' }}>
-            رقم الواتساب: <span dir="ltr" style={{ color: '#c9a227' }}>07782214488</span>
+            رقم الواتساب: <span dir="ltr" style={{ color: '#c9a227' }}>07882214488</span>
           </p>
         </div>
       </section>
@@ -987,7 +987,7 @@ export default function IstiftaatPage() {
           <div style={{ textAlign: 'center', marginTop: '48px' }}>
             <p style={{ color: '#7A7670', marginBottom: '16px' }}>لم تجد إجابة لسؤالك؟</p>
             <a
-              href="https://wa.me/9647782214488"
+              href="https://wa.me/9647882214488"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary"

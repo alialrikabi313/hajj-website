@@ -68,7 +68,7 @@ export default function Footer() {
               <SocialLink href="#" icon="facebook" />
               <SocialLink href="#" icon="youtube" />
               <SocialLink href="#" icon="telegram" />
-              <SocialLink href="https://wa.me/9647782214488" icon="whatsapp" />
+              <SocialLink href="https://wa.me/9647882214488" icon="whatsapp" />
             </div>
           </div>
 
@@ -236,7 +236,7 @@ export default function Footer() {
                   </svg>
                 </div>
                 <div>
-                  <span style={{ color: '#d1d5db', fontSize: '14px' }} dir="ltr">07782214488</span>
+                  <span style={{ color: '#d1d5db', fontSize: '14px' }} dir="ltr">07882214488</span>
                   <p style={{ color: '#6b7280', fontSize: '12px', marginTop: '2px' }}>واتساب - للاستفتاءات والتواصل</p>
                 </div>
               </li>
@@ -244,7 +244,7 @@ export default function Footer() {
 
             {/* WhatsApp Button */}
             <a
-              href="https://wa.me/9647782214488"
+              href="https://wa.me/9647882214488"
               target="_blank"
               rel="noopener noreferrer"
               style={{

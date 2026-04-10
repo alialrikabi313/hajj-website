@@ -8,8 +8,8 @@ export default function ContactPage() {
       ),
       title: 'واتساب',
       subtitle: 'للاستفتاءات والتواصل السريع',
-      value: '07782214488',
-      link: 'https://wa.me/9647782214488',
+      value: '07882214488',
+      link: 'https://wa.me/9647882214488',
       color: '#0a8754',
       primary: true,
     },
@@ -22,8 +22,8 @@ export default function ContactPage() {
       ),
       title: 'الهاتف',
       subtitle: 'للاتصال المباشر',
-      value: '07782214488',
-      link: 'tel:+9647782214488',
+      value: '07882214488',
+      link: 'tel:+9647882214488',
       color: '#c9a227',
     },
     {
@@ -122,7 +122,7 @@ export default function ContactPage() {
             </p>
 
             <a
-              href="https://wa.me/9647782214488?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%AA%D8%A7%D8%A1%20%D8%B9%D9%86..."
+              href="https://wa.me/9647882214488?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%AA%D8%A7%D8%A1%20%D8%B9%D9%86..."
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -146,7 +146,7 @@ export default function ContactPage() {
             </a>
 
             <p style={{ color: '#9ca3af', fontSize: '13px', marginTop: '16px' }} dir="ltr">
-              07782214488
+              07882214488
             </p>
           </div>
         </div>
